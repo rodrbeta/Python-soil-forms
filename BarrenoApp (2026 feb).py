@@ -1666,9 +1666,9 @@ class PageOne(tk.Frame):
 
         # 4. Agregar el resto de campos (Asegúrate de que estas variables existan)
         # Sustituye estas líneas por las variables que realmente usas en tu app
-        #data['idobserv'] = self.controller.IDpunto_var.get()
-        # data['idestudio'] = self.controller.proyecto_var.get()
-        # data['codestacion'] = self.estacion_var.get() # Ejemplo
+        data['idobserv'] = self.controller.IDpunto_var.get()
+        data['idestudio'] = self.controller.proyecto_var.get()
+        data['codestacion'] = self.estacion_var.get() # Ejemplo
 
         # 5. Enviar al controlador y saltar de página
         self.controller.update_form_data('PageOne', data)
@@ -2663,8 +2663,7 @@ class PageTwo(tk.Frame):
             seleccion_fragporc.set(self.fragporc_choices[0])
             seleccion_fragporc.grid(row=i + 24, column = 10)
        
-        """
-        # Textura visual  (FAO)
+       # Textura visual  (FAO)
                 
         self.texvis_label = ttk.Label(self,
                                       text = 'Textura visual (FAO)',
@@ -2898,8 +2897,7 @@ class PageTwo(tk.Frame):
                                         textvariable = self.texlab_var, state = 'readonly')
             self.seleccion_texlab['values'] = self.texlab_valor            
             self.seleccion_texlab.grid(row=i + 24, column=13)
-    """
-
+   
         # Humedad (%)
         self.humedad_var = tk.DoubleVar()
         self.humedad_vars = []
@@ -3096,8 +3094,8 @@ class PageTwo(tk.Frame):
                                'Color': 'lavender'}
         
         # Aseguramos que la columna 0 y 1 existan para alinear bien
-        #ttk.Label(self, text='Hor.', background='gray', width=6, anchor='center').grid(
-         #   row=1, column=0, rowspan=2, sticky='nsew')
+        ttk.Label(self, text='Hor.', background='gray', width=6, anchor='center').grid(
+            row=1, column=0, rowspan=2, sticky='nsew')
         
         for text, start_col, color in labels_data:
             ttk.Label(self, text=text, background=color, width=5, anchor='center').grid(
@@ -3125,8 +3123,8 @@ class PageTwo(tk.Frame):
         for i in range(self.num_filas):
             row_index = i + 4
             # Etiqueta de Estrato (Columna 0)
-            #ttk.Label(self, text=str(i + 1), background='lightgray', width=5, anchor='center').grid(
-            #    row=row_index, column=0, sticky='ew')
+            ttk.Label(self, text=str(i + 1), background='lightgray', width=5, anchor='center').grid(
+                row=row_index, column=0, sticky='ew')
             
             # --- Configuración para Color HÚMEDO (offset 3) ---
             self._create_munsell_entry_row(row_index, i, col_offset=3,
@@ -3567,8 +3565,8 @@ class PageTwo(tk.Frame):
                 # Opcional: Manejar errores si un valor no se encuentra, aunque no debería pasar con 'readonly'
                 messagebox.showerror("Error de datos", f"Valor no reconocido en Fragmento porcentaj: {fragporc_nombre}")
                 
-        #estacion_nombre = self.controller.estacion_var.get()
-        #estacion_codigo = self.controller.estacion_option.get(estacion_nombre, 'ERROR')
+        estacion_nombre = self.controller.estacion_var.get()
+        estacion_codigo = self.controller.estacion_option.get(estacion_nombre, 'ERROR')
             
         data = {'idestudio': self.controller.proyecto_var.get(),
                 'codestacion': self.controller.estacion_codigo_var,
@@ -3609,9 +3607,9 @@ class PageTwo(tk.Frame):
                 'mo_porcentaje': '',
                 'artfc_volumen': '',
                 
-                #'pesofrag10g_suelo': AÑADIR ##########,
-                #'muestreador_long_m': AÑADIR ##########,
-                #'muestreado_diam_ancho_m': AÑADIR ##########,
+                'pesofrag10g_suelo': AÑADIR ##########,
+                'muestreador_long_m': AÑADIR ##########,
+                'muestreado_diam_ancho_m': AÑADIR ##########,
                 'ph': '',
                 'arena_visual': '', # [var.get() for var in self.arenavis_vars],
                 'limo_visual': '', #  [var.get() for var in self.limovis_vars],
@@ -3619,7 +3617,7 @@ class PageTwo(tk.Frame):
                 'arena_lab': '', #  [var.get() for var in self.arenalab_vars],
                 'limo_lab': '', #  [var.get() for var in self.limolab_vars],
                 'arcilla_lab': '', #  [var.get() for var in self.arcillalab_vars],
-                #'frag_tamanno_mm': AÑADIR ###########
+                'frag_tamanno_mm': AÑADIR ###########
                 'Observaciones': [var.get() for var in self.observaciones_vars], 
                 
                 'Hue hum.': [var.get() for var in self.huehum_vars],
@@ -3701,9 +3699,9 @@ class PageTwo(tk.Frame):
         [var.set(self.redondez_choices[0]) for var in self.redondez_vars]
         [var.set(self.esfericidad_choices[0]) for var in self.esfericidad_vars]
         
-        #[var.set(0) for var in self.arenavis_vars]
-        #[var.set(0) for var in self.limovis_vars]
-        #[var.set(0) for var in self.arcillavis_vars]
+        [var.set(0) for var in self.arenavis_vars]
+        [var.set(0) for var in self.limovis_vars]
+        [var.set(0) for var in self.arcillavis_vars]
         
         [var.set(0) for var in self.arenalab_vars]
         [var.set(0) for var in self.limolab_vars]
